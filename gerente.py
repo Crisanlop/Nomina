@@ -1,19 +1,21 @@
+from rich import inspect
+from colorama import Fore
+
 from empleado import Empleado
 
 class Gerente(Empleado):
-    """
-    Clase que representa un gerente de una empresa.
-
-    Herencia:
-        Empleado: Clase base de la que hereda.
-
-    Atributos:
-        ninguno
-
-    Métodos:
-        calcular_salario(): Calcula el salario del gerente (sobrescrito).
-    """
+    def __init__(self, nombres, apellidos, salario):
+        super().__init__(nombres, apellidos, "Gerente", salario)
 
     def calcular_salario(self):
-        salario_base = super().calcular_salario()
-        return salario_base * 1.2
+        return self.salario
+
+    def __str__(self):
+        return f"{self.nombres} {self.apellidos} ({self.cargo})"
+
+    def __repr__(self):
+        return inspect.rich_repr(self)
+
+    def mostrar_informacion(self):
+        informacion = f"{self.nombres} {self.apellidos} {self.cargo}"
+        return informacion

@@ -1,16 +1,7 @@
+from rich import inspect
+from colorama import Fore
+
 class Empleado:
-    """
-    Clase que representa un empleado de una empresa.
-
-    Atributos:
-        nombres (str): Nombres del empleado.
-        apellidos (str): Apellidos del empleado.
-        cargo (str): Cargo del empleado.
-        salario (int): Salario del empleado.
-    Métodos:
-        calcular_salario(): Calcula el salario del empleado.
-    """
-
     def __init__(self, nombres, apellidos, cargo, salario):
         self.nombres = nombres
         self.apellidos = apellidos
@@ -19,3 +10,13 @@ class Empleado:
 
     def calcular_salario(self):
         return self.salario
+
+    def __str__(self):
+        return f"{self.nombres} {self.apellidos} ({self.cargo})"
+
+    def __repr__(self):
+        return inspect.rich_repr(self)
+
+    def mostrar_informacion(self):
+        informacion = f"{self.nombres} {self.apellidos} {self.cargo}"
+        return informacion
